@@ -5,7 +5,6 @@
 :root {
   --color-text: #666;
   --color-high-text: #ff5777;
-  --color-text: #ff8198;
   --color-background: #fff;
   --font-size: 14px;
   --line-height: 1.5;
@@ -76,10 +75,10 @@ a {color: #666;display: block;text-decoration: none;}
 input {outline: none;-webkit-appearance: none;-webkit-appearance: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
 /* 公共样式 */
 .flex{
-    display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */ display: -moz-box; /* Firefox 17- */  
-    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */  
-    display: -moz-flex; /* Firefox 18+ */  
-    display: -ms-flexbox; /* IE 10 */  
+    display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */ display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
     display: flex;
 }
 .clearfix:after {

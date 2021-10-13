@@ -1,3 +1,26 @@
 {
-    "testlocaldata": "success"
+    "homedata": {
+      "swiperdata":[
+        {"index":0,"url":"https://m.360buyimg.com/babel/s1363x768_jfs/t1/211641/35/4729/172076/6163b2d5Ec074b7a7/c5b876508493c7e8.jpg!q70.dpg"},
+        {"index":1,"url":"https://m.360buyimg.com/babel/s1363x768_jfs/t1/205800/32/11006/64441/6165a3b7E50b15f38/957e339dfd018281.jpg!q70.dpg"},
+        {"index":2,"url":"https://m.360buyimg.com/babel/s606x342_jfs/t1/197258/25/10465/137489/6152d746E01b79761/75bb7ffb32f7ce35.jpg!q70.dpg"},
+        {"index":3,"url":"https://m.360buyimg.com/babel/s1176x663_jfs/t1/172410/20/22024/144593/6160f550E8aacd728/9d30cd85ade66dca.jpg!q70.dpg"}
+      ],
+      "recommend":[
+        {"index":0,"name":"数码电器","url":"https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/178015/31/13828/6862/60ec0c04Ee2fd63ac/ccf74d805a059a44.png!q70.jpg.dpg"},
+        {"index":1,"name":"服饰装饰","url":"https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/41867/2/15966/7116/60ec0e0dE9f50d596/758babcb4f911bf4.png!q70.jpg.dpg"},
+        {"index":2,"name":"物流查询","url":"https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/199143/10/8979/4223/614599f5E45cd5464/d15aa650a0ebe596.png!q70.jpg.dpg"},
+        {"index":3,"name":"蔬菜生鲜","url":"https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/177902/16/13776/5658/60ec0e71E801087f2/a0d5a68bf1461e6d.png!q70.jpg.dpg"}
+      ],
+      "popular":[
+        {"index":0,"name":"数码电器","url":"https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/178015/31/13828/6862/60ec0c04Ee2fd63ac/ccf74d805a059a44.png!q70.jpg.dpg"},
+        {"index":1,"name":"服饰装饰","url":"https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/41867/2/15966/7116/60ec0e0dE9f50d596/758babcb4f911bf4.png!q70.jpg.dpg"},
+        {"index":2,"name":"物流查询","url":"https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/199143/10/8979/4223/614599f5E45cd5464/d15aa650a0ebe596.png!q70.jpg.dpg"},
+        {"index":3,"name":"蔬菜生鲜","url":"https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/177902/16/13776/5658/60ec0e71E801087f2/a0d5a68bf1461e6d.png!q70.jpg.dpg"},
+        {"index":4,"name":"数码电器","url":"https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/178015/31/13828/6862/60ec0c04Ee2fd63ac/ccf74d805a059a44.png!q70.jpg.dpg"},
+        {"index":5,"name":"服饰装饰","url":"https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/41867/2/15966/7116/60ec0e0dE9f50d596/758babcb4f911bf4.png!q70.jpg.dpg"},
+        {"index":6,"name":"物流查询","url":"https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/199143/10/8979/4223/614599f5E45cd5464/d15aa650a0ebe596.png!q70.jpg.dpg"},
+        {"index":7,"name":"蔬菜生鲜","url":"https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/177902/16/13776/5658/60ec0e71E801087f2/a0d5a68bf1461e6d.png!q70.jpg.dpg"}
+      ]
+    }
 }
