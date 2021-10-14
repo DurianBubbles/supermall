@@ -5,3 +5,9 @@ export function getHomeMultidata(){
     url:'test.json'
   })
 }
+
+export function getHomeGoodsdata(){
+  return request({
+    url:'goods.json'
+  })
+}

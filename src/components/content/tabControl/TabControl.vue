@@ -28,6 +28,7 @@ export default {
     },
     clickTab(index){
       this.currentindex = index
+      this.$emit('subindex',index)
     }
   }
 }

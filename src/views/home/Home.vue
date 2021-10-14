@@ -6,7 +6,8 @@
     <HomeSwiper :result="result"></HomeSwiper>
     <RecommendView :recomend="recomend"></RecommendView>
     <Popular :popular="popular"></Popular>
-    <TabControl :tittles="['流行','新款','精选']"></TabControl>
+    <TabControl class="tabcontrol" :tittles="['流行','新款','精选']" @subindex="goodsitem"></TabControl>
+    <GoodsList :goods="goodslist"></GoodsList>
   </div>
 </template>
 
@@ -16,17 +17,25 @@ import HomeSwiper from './childComps/HomeSwiper.vue'
 import RecommendView from './childComps/RecommendView.vue'
 import Popular from './childComps/Popular.vue'
 import TabControl from 'components/content/tabControl/TabControl.vue'
+import GoodsList from 'components/content/goods/GoodsList.vue'
 
-import {getHomeMultidata} from 'network/home.js'
+import {getHomeMultidata,getHomeGoodsdata} from 'network/home.js'
 
 
 export default {
   name:'Home',
   data(){
     return{
-      result:null,
-      recomend:null,
-      popular:null
+      result:[],
+      recomend:[],
+      popular:[],
+      goods:{
+        'pop':{page:0,list:[]},
+        'news':{page:0,list:[]},
+        'sell':{page:0,list:[]}
+      },
+      tabcontrolvalue:['pop','news','sell'],
+      currentvalue:'pop'
     }
   },
   components:{
@@ -34,7 +43,8 @@ export default {
     HomeSwiper,
     RecommendView,
     Popular,
-    TabControl
+    TabControl,
+    GoodsList
   },
   created(){
     getHomeMultidata().then(res => {
@@ -42,6 +52,27 @@ export default {
       this.recomend = res.data.homedata.recommend;
       this.popular = res.data.homedata.popular;
     })
+
+    this.classifyGoodsdata('pop')
+    this.classifyGoodsdata('news')
+    this.classifyGoodsdata('sell')
+  },
+  methods:{
+    classifyGoodsdata(type){
+      let page = this.goods[type].page;
+      getHomeGoodsdata().then(res => {
+        this.goods[type].list.push(...res.data[type][page].list);
+      });
+      this.goods[type].page += 1;
+    },
+    goodsitem(index){
+      this.currentvalue = this.tabcontrolvalue[index];
+    }
+  },
+  computed:{
+    goodslist(){
+      return this.goods[this.currentvalue].list
+    }
   }
 }
 </script>
@@ -59,5 +90,11 @@ export default {
     background: #1296db;
     color: #fff;
     z-index: 9;
+  }
+
+  .tabcontrol{
+    position: sticky;
+    top: 44px;
+    background: #fff;
   }
 </style>
