@@ -3,7 +3,11 @@
     <NavBar class="home-nav">
       <div slot="center">购物街</div>
     </NavBar>
-    <Scroll class="outside" ref="scroll" :scrollPosition="3" @nowposition="excuposition">
+    <Scroll class="outside" ref="scroll"
+      :scrollPosition="3"
+      :pullUpLoad="true"
+      @nowposition="excuposition"
+      @loadmore="exculoadmore" >
       <HomeSwiper :result="result"></HomeSwiper>
       <RecommendView :recomend="recomend"></RecommendView>
       <Popular :popular="popular"></Popular>
@@ -81,6 +85,9 @@ export default {
     },
     excuposition(position){
       this.isShow = -(position.y) > 850
+    },
+    exculoadmore(){
+      this.classifyGoodsdata(this.currentvalue)
     }
   },
   computed:{

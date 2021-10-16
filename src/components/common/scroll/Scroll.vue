@@ -14,6 +14,10 @@ export default {
     scrollPosition:{
       type:Number,
       default:0
+    },
+    pullUpLoad:{
+      type:Boolean,
+      default:false
     }
   },
   data(){
@@ -24,10 +28,15 @@ export default {
   mounted(){
     this.scroll = new BScroll(this.$refs.wrapper,{
       click:true,
-      probeType:this.scrollPosition
+      probeType:this.scrollPosition,
+      pullUpLoad:this.pullUpLoad
     }),
     this.scroll.on('scroll',(position) => {
       this.$emit('nowposition',position)
+    })
+    this.scroll.on('pullingUp',() => {
+      this.$emit('loadmore')
+      this.scroll.finishPullUp()
     })
   },
   methods:{
