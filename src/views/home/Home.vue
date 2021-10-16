@@ -3,11 +3,14 @@
     <NavBar class="home-nav">
       <div slot="center">购物街</div>
     </NavBar>
-    <HomeSwiper :result="result"></HomeSwiper>
-    <RecommendView :recomend="recomend"></RecommendView>
-    <Popular :popular="popular"></Popular>
-    <TabControl class="tabcontrol" :tittles="['流行','新款','精选']" @subindex="goodsitem"></TabControl>
-    <GoodsList :goods="goodslist"></GoodsList>
+    <Scroll class="outside" ref="scroll" :scrollPosition="3" @nowposition="excuposition">
+      <HomeSwiper :result="result"></HomeSwiper>
+      <RecommendView :recomend="recomend"></RecommendView>
+      <Popular :popular="popular"></Popular>
+      <TabControl class="tabcontrol" :tittles="['流行','新款','精选']" @subindex="goodsitem"></TabControl>
+      <GoodsList :goods="goodslist"></GoodsList>
+    </Scroll>
+    <BackTop @click.native="backtopclick" v-show="isShow"></BackTop>
   </div>
 </template>
 
@@ -18,6 +21,8 @@ import RecommendView from './childComps/RecommendView.vue'
 import Popular from './childComps/Popular.vue'
 import TabControl from 'components/content/tabControl/TabControl.vue'
 import GoodsList from 'components/content/goods/GoodsList.vue'
+import Scroll from 'components/common/scroll/Scroll.vue'
+import BackTop from 'components/content/backtop/BackTop.vue'
 
 import {getHomeMultidata,getHomeGoodsdata} from 'network/home.js'
 
@@ -35,7 +40,8 @@ export default {
         'sell':{page:0,list:[]}
       },
       tabcontrolvalue:['pop','news','sell'],
-      currentvalue:'pop'
+      currentvalue:'pop',
+      isShow:false
     }
   },
   components:{
@@ -44,7 +50,9 @@ export default {
     RecommendView,
     Popular,
     TabControl,
-    GoodsList
+    GoodsList,
+    Scroll,
+    BackTop
   },
   created(){
     getHomeMultidata().then(res => {
@@ -67,6 +75,12 @@ export default {
     },
     goodsitem(index){
       this.currentvalue = this.tabcontrolvalue[index];
+    },
+    backtopclick(){
+      this.$refs.scroll.backTop(0,0,500)
+    },
+    excuposition(position){
+      this.isShow = -(position.y) > 850
     }
   },
   computed:{
@@ -79,7 +93,7 @@ export default {
 
 <style scoped>
   #home{
-    padding-top: 44px;
+    height: 100vh;
   }
 
   .home-nav{
@@ -96,5 +110,14 @@ export default {
     position: sticky;
     top: 44px;
     background: #fff;
+  }
+
+  .outside{
+    position: absolute;
+    top: 44px;
+    left: 0;
+    right: 0;
+    bottom: 49px;
+    overflow: hidden;
   }
 </style>

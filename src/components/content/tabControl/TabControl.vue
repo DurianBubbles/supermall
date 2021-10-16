@@ -41,6 +41,7 @@ export default {
     text-align: center;
     height: 44px;
     line-height: 44px;
+    z-index: 9;
   }
 
   .tab-control>div{
