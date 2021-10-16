@@ -1,6 +1,6 @@
 <template>
   <div class="goods-card">
-    <img :src="goodsitem.url" alt="">
+    <img :src="goodsitem.url" alt="" @load="imgloadend">
     <p class="itemtittle">{{goodsitem.tittle}}</p>
     <p><span class="price">{{goodsitem.price}}</span><span class="star">{{goodsitem.star}}</span></p>
   </div>
@@ -15,6 +15,11 @@ export default {
       default(){
         return {}
       }
+    }
+  },
+  methods:{
+    imgloadend(){
+      this.$emit('imgloadend')
     }
   }
 }

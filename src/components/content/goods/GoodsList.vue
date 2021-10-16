@@ -1,6 +1,6 @@
 <template>
   <div class="goods">
-    <GoodsListItem v-for="(item,index) in goods" :key="index" :goodsitem="item"></GoodsListItem>
+    <GoodsListItem v-for="(item,index) in goods" :key="index" :goodsitem="item" @imgloadend="upimgloadend"></GoodsListItem>
   </div>
 </template>
 
@@ -18,6 +18,11 @@ export default {
   },
   components:{
     GoodsListItem
+  },
+  methods:{
+    upimgloadend(){
+      this.$emit('imgloadend')
+    }
   }
 }
 </script>

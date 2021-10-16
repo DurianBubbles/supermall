@@ -12,7 +12,7 @@
       <RecommendView :recomend="recomend"></RecommendView>
       <Popular :popular="popular"></Popular>
       <TabControl class="tabcontrol" :tittles="['流行','新款','精选']" @subindex="goodsitem"></TabControl>
-      <GoodsList :goods="goodslist"></GoodsList>
+      <GoodsList :goods="goodslist" @imgloadend="excurefresh"></GoodsList>
     </Scroll>
     <BackTop @click.native="backtopclick" v-show="isShow"></BackTop>
   </div>
@@ -88,6 +88,9 @@ export default {
     },
     exculoadmore(){
       this.classifyGoodsdata(this.currentvalue)
+    },
+    excurefresh(){
+      this.$refs.scroll.refreshHeight()
     }
   },
   computed:{

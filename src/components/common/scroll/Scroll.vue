@@ -42,6 +42,9 @@ export default {
   methods:{
     backTop(x,y,time){
       this.scroll.scrollTo(x,y,time)
+    },
+    refreshHeight(){
+      this.scroll.refresh()
     }
   }
 }
