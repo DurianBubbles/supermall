@@ -90,7 +90,18 @@ export default {
       this.classifyGoodsdata(this.currentvalue)
     },
     excurefresh(){
-      this.$refs.scroll.refreshHeight()
+      let fun = this.debounce(this.$refs.scroll.refreshHeight,500)
+      fun()
+    },
+    // 解决频繁请求scroll的refresh()函数，防抖函数
+    debounce(func,delay){
+      let timer = null
+      return function(...args){
+        if(timer) clearTimeout(timer)
+        timer = setTimeout(() => {
+          func.apply(this,args)
+        },delay)
+      }
     }
   },
   computed:{
@@ -98,6 +109,14 @@ export default {
       return this.goods[this.currentvalue].list
     }
   }
+  // home tabControl吸顶效果思路：scroll组件中一个tabControl组件，navBar下方一个tabControl组件，首先监听home Swiper中的图片加载完成，然后emit到home，获取tabControl offsetTop，保存到data,
+  // 在excuposition方法中，将position.y与offsetTop的值，做对比，大于则显示navBar下方的tabControl组件，小于则隐藏该组件，用v-show实现
+  // 同步tabControl中选中问题，保持两个组件index相同
+
+
+  // home位置保存思路
+  //将router-view 加上 keep-alive ， 然后在Home.vue中，加上activated(scrollTo设置scroll组件的Y值，并刷新refresh)、deactivated(保存离开时，当前scroll组件的Y值)函数，
+
 }
 </script>
 
