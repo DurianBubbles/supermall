@@ -1,0 +1,62 @@
+{
+  "goods":{
+    "pop1":{
+      "topImages":["https://m.360buyimg.com/mobilecms/s750x750_jfs/t1/138794/31/11096/467189/5f89beacE315945aa/2a6daa12bd15c6aa.jpg!q80.dpg.webp",
+        "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/144258/37/10974/394296/5f89beadE5d736495/5039fabf78f7b5e4.jpg!q70.dpg.webp",
+        "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/141301/11/11083/376111/5f89beafE0c77814a/accf7ec21195281b.jpg!q70.dpg.webp",
+        "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/127804/30/15235/505169/5f89beb1Ef380d788/9f3f0cae7a39436e.jpg!q70.dpg.webp"
+      ],
+      "itemInfo":{
+        "tittle":"优诺（yoplait） 高品质 全脂牛奶 950ml 高钙优质乳蛋白鲜奶轻食鲜牛乳",
+        "desc":"新品上市",
+        "discount":"活动价",
+        "newprice":"￥22.90",
+        "oldPrice":"￥43.99",
+        "realPrice":"￥22.90"
+      },
+      "columns":{"sales":2800,"star":5021,"sendtime":"24小时内发货"},
+      "goodsinfo":{
+        "tittle":"文本标题",
+        "url":["https://img12.360buyimg.com/imgzone/jfs/t1/35888/30/2852/267053/5cbbcfb5Eb4890755/450f9c430e755c92.jpg!q70.dpg.webp",
+        "https://img13.360buyimg.com/imgzone/jfs/t1/33901/26/5819/211465/5cbbcfb7Ef9a85947/6ac1645069ed1522.jpg!q70.dpg.webp",
+        "https://img10.360buyimg.com/imgzone/jfs/t1/31523/20/13666/419570/5cbbcfb8E9fd2cf31/7b346bdfa38986ac.jpg!q70.dpg.webp",
+        "https://img12.360buyimg.com/imgzone/jfs/t1/34269/11/4322/340451/5cbbcfb9E4162c8eb/45826a3fad8795ac.jpg!q70.dpg.webp",
+        "https://img13.360buyimg.com/imgzone/jfs/t1/39989/39/1030/136274/5cbbcfbbE8536a55a/d8fcc705fde8924b.jpg!q70.dpg.webp",
+        "https://img14.360buyimg.com/imgzone/jfs/t1/33193/13/5768/118864/5cbbcfbbEfe5116fa/647945b2ac042367.jpg!q70.dpg.webp",
+        "https://img13.360buyimg.com/imgzone/jfs/t1/39830/7/984/613669/5cbbcfbeEa0fbf3fa/1acad0ca26066403.jpg!q70.dpg.webp",
+        "https://img12.360buyimg.com/imgzone/jfs/t1/30767/21/13703/239968/5cbbcffdEb8302eb6/fc6998eff52ea48c.jpg!q70.dpg.webp"
+        ]
+      },
+      "paraminfo":[
+        {"key":"图案","value":"宫廷复古图/民族复古图,字母/文字"},
+        {"key":"厂名","value":"艾玫莉服饰有限公司"},
+        {"key":"颜色","value":"黑白拼接"},
+        {"key":"袖型","value":"常规袖"},
+        {"key":"上衣厚度","value":"适中"},
+        {"key":"尺码","value":"XL,L,M,XXL"},
+        {"key":"衣长","value":"常规款(51-65cm)"},
+        {"key":"厂址","value":"广东省揭阳市普宁市"},
+        {"key":"材质","value":"棉"}
+      ]
+    },
+    "pop2":{
+      "topImages":["https://m.360buyimg.com/mobilecms/s750x750_jfs/t1/166412/14/14059/52258/60583e4dEb90f895f/5b7aa4cc1f073043.jpg!q80.dpg.webp",
+        "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/165879/40/13876/56361/60583e41E57b5f2e5/a0412b4be1a669f5.jpg!q70.dpg.webp",
+        "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/162955/34/13928/142403/60583e4dE3f6f70cd/8e28542595f7110f.jpg!q70.dpg.webp",
+        "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/169885/7/14372/51343/6058437eE1712ff12/c1536ece0131a3d2.jpg!q70.dpg.webp",
+        "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/127327/21/5983/363246/5efadca6Eaeba9623/a23ec8e4882bdf38.jpg!q70.dpg.webp",
+        "https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/165210/40/14342/55381/605840deE755fb9cf/e66ddadf278ca108.jpg!q70.dpg.webp"
+      ],
+      "itemInfo":{
+        "tittle":"优诺（yoplait） 高品质 全脂牛奶 950ml 高钙优质乳蛋白鲜奶轻食鲜牛乳",
+        "desc":"新品上市",
+        "discount":"活动价",
+        "newprice":"￥22.90",
+        "oldPrice":"￥43.99",
+        "realPrice":"￥22.90"
+      },
+      "columns":{"sales":1538,"star":2201,"sendtime":"72小时内发货"}
+    }
+
+  }
+}

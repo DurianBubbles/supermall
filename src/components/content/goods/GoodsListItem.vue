@@ -1,5 +1,5 @@
 <template>
-  <div class="goods-card">
+  <div class="goods-card" @click="itemClick">
     <img :src="goodsitem.url" alt="" @load="imgloadend">
     <p class="itemtittle">{{goodsitem.tittle}}</p>
     <p><span class="price">{{goodsitem.price}}</span><span class="star">{{goodsitem.star}}</span></p>
@@ -20,6 +20,9 @@ export default {
   methods:{
     imgloadend(){
       this.$emit('imgloadend')
+    },
+    itemClick(){
+      this.$router.push('/detail'+this.goodsitem.id)
     }
   }
 }
