@@ -6,6 +6,12 @@ export function getDetail(){
   })
 }
 
+export function getHomeGoodsdata(){
+  return request({
+    url:'goods.json'
+  })
+}
+
 export class DetailGoods{
   constructor(itemInfo,columns){
     this.tittle = itemInfo.tittle

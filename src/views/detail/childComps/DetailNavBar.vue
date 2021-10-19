@@ -24,7 +24,7 @@ export default {
   },
   data(){
     return {
-      tittles:['商品','参数','评论','推荐'],
+      tittles:['商品','参数','详情','推荐'],
       currentIndex:0
     }
   },

@@ -6,20 +6,23 @@
       <DetailBaseInfo :goods="goods"></DetailBaseInfo>
       <DetailShopInfo :shopinfo="shopinfo"></DetailShopInfo>
       <DetailGoodsInfo :goodsinfoimage="goodsinfo" @goodsInfoimgloadend="goodsInfoimgloadend"></DetailGoodsInfo>
-      <!-- DetailParamsInfo 参数-->
-      <!-- DetailRecommendInfo 推荐 导入GoodsList.vue就可以实现-->
+      <DetailParamsInfo :paraminfo="paraminfo"></DetailParamsInfo>
+      <DetailRecommendInfo :recommend="recommend" @imgloadend="excuimgloadend"></DetailRecommendInfo>
     </Scroll>
   </div>
 </template>
 
 <script>
 import DetailNavBar from 'views/detail/childComps/DetailNavBar.vue'
-import {getDetail,DetailGoods} from 'network/detail.js'
+import {getDetail,DetailGoods,getHomeGoodsdata} from 'network/detail.js'
 import TopSwiper from './childComps/TopSwiper.vue'
 import DetailBaseInfo from './childComps/DetailBaseInfo.vue'
 import DetailShopInfo from './childComps/DetailShopInfo.vue'
 import Scroll from 'components/common/scroll/Scroll.vue'
 import DetailGoodsInfo from './childComps/DetailGoodsInfo.vue'
+import DetailParamsInfo from './childComps/DetailParamsInfo.vue'
+import DetailRecommendInfo from './childComps/DetailRecommendInfo.vue'
+
 export default {
   name:'Detail',
   data(){
@@ -29,7 +32,8 @@ export default {
       goods:{},
       goodsinfo:[],
       shopinfo:{},
-      paraminfo:{}
+      paraminfo:[],
+      recommend:[]
     }
   },
   created(){
@@ -46,6 +50,9 @@ export default {
       this.shopinfo = res.data.goods[this.goodsId].shopinfo
       // 获取参数
       this.paraminfo = res.data.goods[this.goodsId].paraminfo
+    }),
+    getHomeGoodsdata().then(res => {
+      this.recommend = res.data.pop[0].list
     })
   },
   components:{
@@ -54,10 +61,15 @@ export default {
     DetailBaseInfo,
     DetailShopInfo,
     DetailGoodsInfo,
+    DetailParamsInfo,
+    DetailRecommendInfo,
     Scroll
   },
   methods:{
     goodsInfoimgloadend(){
+      this.$refs.scroll.refreshHeight()
+    },
+    excuimgloadend(){
       this.$refs.scroll.refreshHeight()
     }
   }
