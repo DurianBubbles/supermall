@@ -27,6 +27,16 @@
         "https://img12.360buyimg.com/imgzone/jfs/t1/30767/21/13703/239968/5cbbcffdEb8302eb6/fc6998eff52ea48c.jpg!q70.dpg.webp"
         ]
       },
+      "shopinfo":{
+        "noticeitem":["退货补运费","全国包邮","7天无理由退货","可配送港澳"],
+        "shopiconurl":"https://img14.360buyimg.com/cms/jfs/t21049/276/68134357/51153/f18e61a8/5af956efN11e762c7.jpg!q70.dpg.webp",
+        "shopname":"西麦食品旗舰店",
+        "totalsales":"5.8万",
+        "totalbaby":99,
+        "evaluatescore":9.93,
+        "logisticsscore":8.90,
+        "aftersalescore":7.90
+      },
       "paraminfo":[
         {"key":"图案","value":"宫廷复古图/民族复古图,字母/文字"},
         {"key":"厂名","value":"艾玫莉服饰有限公司"},

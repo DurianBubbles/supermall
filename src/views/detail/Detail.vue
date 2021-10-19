@@ -4,7 +4,7 @@
     <Scroll class="content" ref="scroll">
       <TopSwiper :topImages="topImages"></TopSwiper>
       <DetailBaseInfo :goods="goods"></DetailBaseInfo>
-      <DetailShopInfo></DetailShopInfo>
+      <DetailShopInfo :shopinfo="shopinfo"></DetailShopInfo>
       <DetailGoodsInfo :goodsinfoimage="goodsinfo" @goodsInfoimgloadend="goodsInfoimgloadend"></DetailGoodsInfo>
       <!-- DetailParamsInfo 参数-->
       <!-- DetailRecommendInfo 推荐 导入GoodsList.vue就可以实现-->
@@ -27,7 +27,9 @@ export default {
       goodsId:null,
       topImages:[],
       goods:{},
-      goodsinfo:[]
+      goodsinfo:[],
+      shopinfo:{},
+      paraminfo:{}
     }
   },
   created(){
@@ -40,6 +42,10 @@ export default {
       res.data.goods[this.goodsId].columns)
       //获取详情图片
       this.goodsinfo = res.data.goods[this.goodsId].goodsinfo.url
+      //获取商家信息
+      this.shopinfo = res.data.goods[this.goodsId].shopinfo
+      // 获取参数
+      this.paraminfo = res.data.goods[this.goodsId].paraminfo
     })
   },
   components:{
