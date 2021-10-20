@@ -1,13 +1,13 @@
 <template>
   <div class="detail">
-    <DetailNavBar></DetailNavBar>
-    <Scroll class="content" ref="scroll">
-      <TopSwiper :topImages="topImages"></TopSwiper>
+    <DetailNavBar @itemclick="itemclick" ref="navBar"></DetailNavBar>
+    <Scroll class="content" ref="scroll" @nowposition="contentposition" :scrollPosition="3">
+      <TopSwiper :topImages="topImages" ref="topswiper"></TopSwiper>
       <DetailBaseInfo :goods="goods"></DetailBaseInfo>
       <DetailShopInfo :shopinfo="shopinfo"></DetailShopInfo>
-      <DetailGoodsInfo :goodsinfoimage="goodsinfo" @goodsInfoimgloadend="goodsInfoimgloadend"></DetailGoodsInfo>
-      <DetailParamsInfo :paraminfo="paraminfo"></DetailParamsInfo>
-      <DetailRecommendInfo :recommend="recommend" @imgloadend="excuimgloadend"></DetailRecommendInfo>
+      <DetailGoodsInfo :goodsinfoimage="goodsinfo" @goodsInfoimgloadend="goodsInfoimgloadend" ref="goods"></DetailGoodsInfo>
+      <DetailParamsInfo :paraminfo="paraminfo" ref="params"></DetailParamsInfo>
+      <DetailRecommendInfo :recommend="recommend" @imgloadend="excuimgloadend" ref="recommend"></DetailRecommendInfo>
     </Scroll>
   </div>
 </template>
@@ -33,7 +33,9 @@ export default {
       goodsinfo:[],
       shopinfo:{},
       paraminfo:[],
-      recommend:[]
+      recommend:[],
+      currentY:[],
+      currentIndex:0
     }
   },
   created(){
@@ -68,9 +70,27 @@ export default {
   methods:{
     goodsInfoimgloadend(){
       this.$refs.scroll.refreshHeight()
+      this.currentY = []
+      this.currentY.push(this.$refs.topswiper.$el.offsetTop)
+      this.currentY.push(this.$refs.goods.$el.offsetTop)
+      this.currentY.push(this.$refs.params.$el.offsetTop)
+      this.currentY.push(this.$refs.recommend.$el.offsetTop)
     },
     excuimgloadend(){
       this.$refs.scroll.refreshHeight()
+    },
+    itemclick(index){
+      this.$refs.scroll.scrollTo(0,-this.currentY[index],500)
+    },
+    contentposition(position){
+      const positionY = -position.y
+      let length = this.currentY.length
+      for(let i = 0; i < length; i++ ){
+        if((i< length-1 && positionY>=this.currentY[i] && positionY < this.currentY[i+1]) ||
+        (i === length -1 && positionY >= this.currentY[i])){
+          this.$refs.navBar.currentIndex = i
+        }
+      }
     }
   }
 }

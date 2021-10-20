@@ -81,7 +81,7 @@ export default {
       this.currentvalue = this.tabcontrolvalue[index];
     },
     backtopclick(){
-      this.$refs.scroll.backTop(0,0,500)
+      this.$refs.scroll.scrollTo(0,0,500)
     },
     excuposition(position){
       this.isShow = -(position.y) > 850

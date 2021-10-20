@@ -24,13 +24,14 @@ export default {
   },
   data(){
     return {
-      tittles:['商品','参数','详情','推荐'],
+      tittles:['商品','详情','参数','推荐'],
       currentIndex:0
     }
   },
   methods:{
     tittleClick(index){
       this.currentIndex = index
+      this.$emit('itemclick',index)
     },
     goback(){
       this.$router.back()
