@@ -9,6 +9,8 @@
       <DetailParamsInfo :paraminfo="paraminfo" ref="params"></DetailParamsInfo>
       <DetailRecommendInfo :recommend="recommend" @imgloadend="excuimgloadend" ref="recommend"></DetailRecommendInfo>
     </Scroll>
+    <DetailBottomBar></DetailBottomBar>
+    <BackTop @click.native="backtopclick" v-show="isShow"></BackTop>
   </div>
 </template>
 
@@ -22,6 +24,8 @@ import Scroll from 'components/common/scroll/Scroll.vue'
 import DetailGoodsInfo from './childComps/DetailGoodsInfo.vue'
 import DetailParamsInfo from './childComps/DetailParamsInfo.vue'
 import DetailRecommendInfo from './childComps/DetailRecommendInfo.vue'
+import DetailBottomBar from './childComps/DetailBottomBar.vue'
+import BackTop from 'components/content/backtop/BackTop.vue'
 
 export default {
   name:'Detail',
@@ -35,7 +39,8 @@ export default {
       paraminfo:[],
       recommend:[],
       currentY:[],
-      currentIndex:0
+      currentIndex:0,
+      isShow:false
     }
   },
   created(){
@@ -65,6 +70,8 @@ export default {
     DetailGoodsInfo,
     DetailParamsInfo,
     DetailRecommendInfo,
+    DetailBottomBar,
+    BackTop,
     Scroll
   },
   methods:{
@@ -84,6 +91,7 @@ export default {
     },
     contentposition(position){
       const positionY = -position.y
+      this.isShow = positionY > 850
       let length = this.currentY.length
       for(let i = 0; i < length; i++ ){
         if((i< length-1 && positionY>=this.currentY[i] && positionY < this.currentY[i+1]) ||
@@ -91,6 +99,9 @@ export default {
           this.$refs.navBar.currentIndex = i
         }
       }
+    },
+    backtopclick(){
+      this.$refs.scroll.scrollTo(0,0,500)
     }
   }
 }
@@ -104,7 +115,7 @@ export default {
   }
 
   .content{
-    height:calc(100% - 44px) ;
+    height:calc(100% - 44px - 49px) ;
     overflow: hidden;
   }
 </style>
