@@ -9,7 +9,7 @@
       <DetailParamsInfo :paraminfo="paraminfo" ref="params"></DetailParamsInfo>
       <DetailRecommendInfo :recommend="recommend" @imgloadend="excuimgloadend" ref="recommend"></DetailRecommendInfo>
     </Scroll>
-    <DetailBottomBar></DetailBottomBar>
+    <DetailBottomBar @addCart="exeuaddcart"></DetailBottomBar>
     <BackTop @click.native="backtopclick" v-show="isShow"></BackTop>
   </div>
 </template>
@@ -102,6 +102,18 @@ export default {
     },
     backtopclick(){
       this.$refs.scroll.scrollTo(0,0,500)
+    },
+    exeuaddcart(){
+      // 获取购物车需要展示的信息
+      const product = {}
+      product.image = this.topImages[0]
+      product.tittle = this.goods.tittle
+      product.desc = this.goods.desc
+      product.price = this.goods.realPrice
+      product.id = this.$route.params.id
+      product.checked = true
+      
+      this.$store.commit('addCart',product)
     }
   }
 }
