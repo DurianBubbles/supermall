@@ -22,7 +22,7 @@ export default {
       this.$emit('imgloadend')
     },
     itemClick(){
-      this.$router.push('/detail'+this.goodsitem.id)
+      this.$router.push('/detail/'+this.goodsitem.id)
     }
   }
 }

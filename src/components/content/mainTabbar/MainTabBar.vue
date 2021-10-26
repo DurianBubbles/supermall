@@ -1,5 +1,10 @@
 <template>
+  <!-- TabBar提供整个导航的位置，和内部元素的排列 -->
   <TabBar>
+    <!-- path:路由路径 activecolor:当前元素处于活跃状态时的文字颜色 -->
+    <!-- item-icon:不活跃时使用的图片 -->
+    <!-- item-icon-active:活跃时使用的图片 -->
+    <!-- item-text:元素文字 -->
     <TabBarItem path='/home' activecolor='#1296db'>
       <img slot='item-icon' src="~assets/img/tabbar/home.svg" alt="home">
       <img slot='item-icon-active' src="~assets/img/tabbar/home-active.svg" alt="home">

@@ -1,5 +1,7 @@
 <template>
   <div class="nav-bar">
+    <!-- left right固定宽度 -->
+    <!-- center 自适应宽度 flex:1 -->
     <div class="left"><slot name='left'></slot></div>
     <div class="center"><slot name='center'></slot></div>
     <div class="right"><slot name='right'></slot></div>

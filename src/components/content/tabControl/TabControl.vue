@@ -1,6 +1,8 @@
 <template>
   <div class="tab-control">
-    <div v-for="(item,index) in tittles" :key="index" :class="{active:activeStyle(index)}" @click="clickTab(index)">
+    <div v-for="(item,index) in tittles" :key="index"
+    :class="{active:activeStyle(index)}" 
+    @click="clickTab(index)">
       <span>{{item}}</span>
     </div>
   </div>
@@ -19,10 +21,12 @@ export default {
   },
   data(){
     return {
+      // 记录当前谁处于活跃状态
       currentindex:0
     }
   },
   methods:{
+    // 活跃状态添加active类
     activeStyle(index){
       return this.currentindex === index
     },

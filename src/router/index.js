@@ -1,12 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+// 安装插件
 Vue.use(VueRouter)
 
+// 懒加载方式
+// 首页组件
 const Home = () => import('views/home/Home.vue')
+// 分类组件
 const Category = () => import('views/category/Category.vue')
+// 我的组件
 const Profile = () => import('views/profile/Profile.vue')
+// 购物车组件
 const Shopcart = () => import('views/shopcart/Shopcart.vue')
+// 详情页组件
 const Detail = () => import('views/detail/Detail.vue')
 
 const routes = [
@@ -31,7 +38,7 @@ const routes = [
       component:Shopcart
     },
     {
-      path:'/detail:id',
+      path:'/detail/:id',
       component:Detail
     }
 ]

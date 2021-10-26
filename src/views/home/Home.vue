@@ -1,18 +1,28 @@
 <template>
+  <!-- Home组件包含内容: 
+       NavBar(顶部栏) HomeSwiper(轮播图) RecommendView(推荐栏) Popular(流行栏) 
+       TabControl(控制栏) GoodsList(商品列表) Scroll(滚动组件) BackTop(返回顶部按钮)
+  -->
   <div id="home">
+    <!-- 顶部栏 -->
     <NavBar class="home-nav">
       <div slot="center">购物街</div>
     </NavBar>
+    <!-- nowposition监听位置 -->
+    <!-- loadmore监听加载更多 -->
     <Scroll class="outside" ref="scroll"
       :scrollPosition="3"
       :pullUpLoad="true"
       @nowposition="excuposition"
-      @loadmore="exculoadmore" >
-      <HomeSwiper :result="result"></HomeSwiper>
-      <RecommendView :recomend="recomend"></RecommendView>
-      <Popular :popular="popular"></Popular>
-      <TabControl class="tabcontrol" :tittles="['流行','新款','精选']" @subindex="goodsitem"></TabControl>
-      <GoodsList :goods="goodslist" @imgloadend="excurefresh"></GoodsList>
+      @loadmore="exculoadmore">
+        <!-- 轮播图 -->
+        <HomeSwiper :result="result"></HomeSwiper>
+        <!-- 推荐 -->
+        <RecommendView :recomend="recomend"></RecommendView>
+        <!-- 流行 -->
+        <Popular :popular="popular"></Popular>
+        <TabControl :tittles="['流行','新款','精选']" class="tabcontrol" @subindex="goodsitem"></TabControl>
+        <GoodsList :goods="goodslist" @imgloadend="excurefresh"></GoodsList>
     </Scroll>
     <BackTop @click.native="backtopclick" v-show="isShow"></BackTop>
   </div>
@@ -25,6 +35,7 @@ import RecommendView from './childComps/RecommendView.vue'
 import Popular from './childComps/Popular.vue'
 import TabControl from 'components/content/tabControl/TabControl.vue'
 import GoodsList from 'components/content/goods/GoodsList.vue'
+
 import Scroll from 'components/common/scroll/Scroll.vue'
 import BackTop from 'components/content/backtop/BackTop.vue'
 
@@ -35,16 +46,22 @@ export default {
   name:'Home',
   data(){
     return{
+      // HomeSwiper数据
       result:[],
+      // RecommendView数据
       recomend:[],
+      // Popular数据
       popular:[],
+      // goods传递给GoodsList组件的数据
       goods:{
         'pop':{page:0,list:[]},
         'news':{page:0,list:[]},
         'sell':{page:0,list:[]}
       },
       tabcontrolvalue:['pop','news','sell'],
+      // 决定GoodsList显示不同的数据
       currentvalue:'pop',
+      // 控制 返回顶部按钮 是否显示
       isShow:false
     }
   },
@@ -59,9 +76,13 @@ export default {
     BackTop
   },
   created(){
+    // 获取三个组件中的数据
     getHomeMultidata().then(res => {
+      // HomeSwiper数据
       this.result = res.data.homedata.swiperdata;
+      // RecommendView数据
       this.recomend = res.data.homedata.recommend;
+      // Popular数据
       this.popular = res.data.homedata.popular;
     })
 
@@ -83,9 +104,12 @@ export default {
     backtopclick(){
       this.$refs.scroll.scrollTo(0,0,500)
     },
+    // scroll发生滚动
     excuposition(position){
+      // 控制 返回顶部按钮 是否显示
       this.isShow = -(position.y) > 850
     },
+    // 上拉加载更多
     exculoadmore(){
       this.classifyGoodsdata(this.currentvalue)
     },

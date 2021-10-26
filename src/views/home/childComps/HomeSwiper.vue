@@ -1,7 +1,7 @@
 <template>
   <Swiper>
       <SwiperItem v-for="item in result" :key="item.index">
-        <img :src="item.url" alt="" srcset="">
+        <img :src="item.url" alt="" >
       </SwiperItem>
   </Swiper>
 </template>
@@ -15,6 +15,7 @@ export default {
     SwiperItem
   },
   props:{
+    // 图片数据
     result:{
       type:Array,
       default(){
