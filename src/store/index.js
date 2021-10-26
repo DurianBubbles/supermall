@@ -10,17 +10,17 @@ const store = new Vuex.Store({
     //   优化，参考github  或者 P213
     addCart(state,payload){
       let oldProduct = null
-      for(let item of state.cartList){
-          if(item.id === payload.id){
-              oldProduct = item
-          }
-      }
-      if(oldProduct){
-          oldProduct.count += 1
-      }else{
-          payload.count = 1
-          state.cartList.push(payload)
-      }
+        for(let item of state.cartList){
+            if(item.id === payload.id){
+                oldProduct = item
+            }
+        }
+        if(oldProduct){
+            oldProduct.count += 1
+        }else{
+            payload.count = 1
+            state.cartList.push(payload)
+        }
     }
   },
   actions:{

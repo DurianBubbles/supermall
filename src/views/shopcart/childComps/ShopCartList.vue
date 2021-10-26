@@ -27,7 +27,7 @@ export default {
   .scrollbox{
     position: absolute;
     top: 44px;
-    bottom: 49px;
+    bottom: 79px;
     left: 0;
     right: 0;
     overflow: hidden;
