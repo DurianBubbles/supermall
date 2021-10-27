@@ -11,6 +11,7 @@
     </Scroll>
     <DetailBottomBar @addCart="exeuaddcart"></DetailBottomBar>
     <BackTop @click.native="backtopclick" v-show="isShow"></BackTop>
+    <Toast :message="message" :show="showToast"></Toast>
   </div>
 </template>
 
@@ -26,6 +27,7 @@ import DetailParamsInfo from './childComps/DetailParamsInfo.vue'
 import DetailRecommendInfo from './childComps/DetailRecommendInfo.vue'
 import DetailBottomBar from './childComps/DetailBottomBar.vue'
 import BackTop from 'components/content/backtop/BackTop.vue'
+import Toast from 'components/common/toast/Toast.vue'
 
 export default {
   name:'Detail',
@@ -48,7 +50,11 @@ export default {
       // 保存商品，详情，参数，推荐四个板块的offsetTop值
       currentY:[],
       // 返回顶部按钮是否显示
-      isShow:false
+      isShow:false,
+      // toast显示信息
+      message:'',
+      // toast是否显示
+      showToast:false
     }
   },
   created(){
@@ -83,7 +89,8 @@ export default {
     DetailRecommendInfo,
     DetailBottomBar,
     BackTop,
-    Scroll
+    Scroll,
+    Toast
   },
   methods:{
     // 图片加载完成，刷新scroll高度，并记录四个组建的offsetTop值
@@ -134,7 +141,15 @@ export default {
       product.checked = false
       
       // 放入vuex中
-      this.$store.dispatch('addCart',product)
+      this.$store.dispatch('addCart',product).then(res => {
+        // 数据放入vuex中，回调
+        this.message = res
+        this.showToast = true
+        setTimeout(() => {
+          this.message = ''
+          this.showToast = false
+        },1500)
+      })
     }
   }
 }
