@@ -74,6 +74,8 @@ export default {
     width: 33%;
     position: relative;
     line-height: 17px;
+    display: flex;
+    align-items: center;
   }
 
   .shopinfo .noticeinfo .littleicon{

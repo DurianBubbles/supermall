@@ -22,8 +22,12 @@
         <!-- 流行 -->
         <Popular :popular="popular"></Popular>
         <TabControl :tittles="['流行','新款','精选']" class="tabcontrol" @subindex="goodsitem"></TabControl>
+        <!-- 商品展示模块 -->
+        <!-- imgloadend监听GoodsList中图片加载完成之后，让Home组件对scroll的高度进行一个刷新 -->
         <GoodsList :goods="goodslist" @imgloadend="excurefresh"></GoodsList>
     </Scroll>
+    <!-- 返回顶部按钮 -->
+    <!-- 组件监听点击事件，需要加上.native -->
     <BackTop @click.native="backtopclick" v-show="isShow"></BackTop>
   </div>
 </template>
@@ -39,6 +43,8 @@ import GoodsList from 'components/content/goods/GoodsList.vue'
 import Scroll from 'components/common/scroll/Scroll.vue'
 import BackTop from 'components/content/backtop/BackTop.vue'
 
+// getHomeMultidata 获取test.json数据
+// getHomeGoodsdata 获取goods.json数据
 import {getHomeMultidata,getHomeGoodsdata} from 'network/home.js'
 
 
@@ -52,7 +58,7 @@ export default {
       recomend:[],
       // Popular数据
       popular:[],
-      // goods传递给GoodsList组件的数据
+      // goods传递给GoodsList组件的数据模型
       goods:{
         'pop':{page:0,list:[]},
         'news':{page:0,list:[]},
@@ -86,11 +92,15 @@ export default {
       this.popular = res.data.homedata.popular;
     })
 
+    // 获取第一页 流行 商品数据
     this.classifyGoodsdata('pop')
+    // 获取第一页 新款 商品数据
     this.classifyGoodsdata('news')
+    // 获取第一页 精选 商品数据
     this.classifyGoodsdata('sell')
   },
   methods:{
+    // 根据 不同板块 获取每一页数据
     classifyGoodsdata(type){
       let page = this.goods[type].page;
       getHomeGoodsdata().then(res => {
@@ -98,9 +108,11 @@ export default {
       });
       this.goods[type].page += 1;
     },
+    // 切换 板块
     goodsitem(index){
       this.currentvalue = this.tabcontrolvalue[index];
     },
+    // 返回顶部
     backtopclick(){
       this.$refs.scroll.scrollTo(0,0,500)
     },
@@ -113,13 +125,16 @@ export default {
     exculoadmore(){
       this.classifyGoodsdata(this.currentvalue)
     },
+    // GoodsList中图片加载完成，刷新scroll高度
     excurefresh(){
+      // 500 为防抖函数等待时长
       let fun = this.debounce(this.$refs.scroll.refreshHeight,500)
       fun()
     },
     // 解决频繁请求scroll的refresh()函数，防抖函数
     debounce(func,delay){
       let timer = null
+      // 这里...args结构数组,args接受数组参数
       return function(...args){
         if(timer) clearTimeout(timer)
         timer = setTimeout(() => {
@@ -130,6 +145,7 @@ export default {
   },
   computed:{
     goodslist(){
+      // 显示对应模块内容
       return this.goods[this.currentvalue].list
     }
   }

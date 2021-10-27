@@ -75,6 +75,9 @@ export default {
   .info .desc{
       font-size: 14px;
       line-height: 50px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
   }
 
   .info .priceAndCount{
