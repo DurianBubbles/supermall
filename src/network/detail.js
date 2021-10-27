@@ -1,17 +1,20 @@
 import {request} from 'network/request.js'
 
+// 获取details.json数据
 export function getDetail(){
   return request({
     url:'details.json'
   })
 }
 
+// 获取goods.json数据
 export function getHomeGoodsdata(){
   return request({
     url:'goods.json'
   })
 }
 
+// 封装DetailBaseInfo中的数据
 export class DetailGoods{
   constructor(itemInfo,columns){
     this.tittle = itemInfo.tittle

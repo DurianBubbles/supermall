@@ -31,20 +31,30 @@ export default {
   name:'Detail',
   data(){
     return{
+      // 展示商品的ID
       goodsId:null,
+      // 顶部轮播图的url
       topImages:[],
+      // DetailBaseInfo的数据
       goods:{},
+      // DetailGoodsInfo的数据
       goodsinfo:[],
+      // 商家信息
       shopinfo:{},
+      // 参数信息
       paraminfo:[],
+      // 推荐商品信息
       recommend:[],
+      // 保存商品，详情，参数，推荐四个板块的offsetTop值
       currentY:[],
-      currentIndex:0,
+      // 返回顶部按钮是否显示
       isShow:false
     }
   },
   created(){
+    // 获取商品ID
     this.goodsId = this.$route.params.id
+    // 根据商品ID获取商品数据
     getDetail().then(res => {
       // 获取轮播图图片url
       this.topImages = res.data.goods[this.goodsId].topImages
@@ -58,6 +68,7 @@ export default {
       // 获取参数
       this.paraminfo = res.data.goods[this.goodsId].paraminfo
     }),
+    // 获取推荐商品数据
     getHomeGoodsdata().then(res => {
       this.recommend = res.data.pop[0].list
     })
@@ -75,23 +86,30 @@ export default {
     Scroll
   },
   methods:{
+    // 图片加载完成，刷新scroll高度，并记录四个组建的offsetTop值
     goodsInfoimgloadend(){
-      this.$refs.scroll.refreshHeight()
+      // 刷新高度
+      this.excuimgloadend()
       this.currentY = []
       this.currentY.push(this.$refs.topswiper.$el.offsetTop)
       this.currentY.push(this.$refs.goods.$el.offsetTop)
       this.currentY.push(this.$refs.params.$el.offsetTop)
       this.currentY.push(this.$refs.recommend.$el.offsetTop)
     },
+    // 刷新scroll高度
     excuimgloadend(){
       this.$refs.scroll.refreshHeight()
     },
+    // 监听DetailNavBar点击事件，根据index值，调整scrollY值
     itemclick(index){
       this.$refs.scroll.scrollTo(0,-this.currentY[index],500)
     },
+    // 当前滚动位置
     contentposition(position){
       const positionY = -position.y
+      // 返回顶部按钮是否显示
       this.isShow = positionY > 850
+      // 当scroll滚动时，决定DetailNavBar中哪个按钮处于活跃状态
       let length = this.currentY.length
       for(let i = 0; i < length; i++ ){
         if((i< length-1 && positionY>=this.currentY[i] && positionY < this.currentY[i+1]) ||
@@ -100,9 +118,11 @@ export default {
         }
       }
     },
+    // 返回顶部
     backtopclick(){
       this.$refs.scroll.scrollTo(0,0,500)
     },
+    // 点击加入购物车执行
     exeuaddcart(){
       // 获取购物车需要展示的信息
       const product = {}
@@ -111,9 +131,10 @@ export default {
       product.desc = this.goods.desc
       product.price = this.goods.realPrice
       product.id = this.$route.params.id
-      product.checked = true
+      product.checked = false
       
-      this.$store.commit('addCart',product)
+      // 放入vuex中
+      this.$store.dispatch('addCart',product)
     }
   }
 }

@@ -25,6 +25,7 @@ export default {
   data(){
     return {
       tittles:['商品','详情','参数','推荐'],
+      // 记录当前活跃按钮
       currentIndex:0
     }
   },
@@ -34,6 +35,7 @@ export default {
       this.$emit('itemclick',index)
     },
     goback(){
+      // 返回上一步路由
       this.$router.back()
     }
   }

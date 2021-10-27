@@ -3,7 +3,7 @@
   <div class="goods-card" @click="itemClick">
     <img :src="goodsitem.url" alt="" @load="imgloadend">
     <p class="itemtittle">{{goodsitem.tittle}}</p>
-    <p><span class="price">{{goodsitem.price}}</span><span class="star">{{goodsitem.star}}</span></p>
+    <p><span class="price">{{goodsitem.price | priceFormat}}</span><span class="star">{{goodsitem.star}}</span></p>
   </div>
 </template>
 
@@ -27,6 +27,11 @@ export default {
       // 给详情页传递商品ID
       this.$router.push('/detail/'+this.goodsitem.id)
     }
+  },
+  filters:{
+    priceFormat(price){
+      return '￥' + price
+    }
   }
 }
 </script>
@@ -34,6 +39,7 @@ export default {
 <style scoped>
   .goods-card{
     width: 45%;
+    margin-bottom: 10px;
   }
 
   .goods-card img{
