@@ -28,6 +28,7 @@ export default {
     text-align: center;
     padding-bottom: 15px;
     border-bottom: 8px solid #eee;
+    padding-top: 15px;
   }
 
   .recommend>div{

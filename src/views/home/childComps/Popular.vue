@@ -38,6 +38,7 @@ export default {
   .popular .iconbox{
     display: flex;
     flex-wrap: wrap;
+    margin-top: 10px;
   }
 
   .popular .iconbox>div{
@@ -49,8 +50,9 @@ export default {
   }
 
   .popular .iconbox img{
-    width: 45px;
-    height: 45px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
   }
 
   .popular .iconbox p{

@@ -30,11 +30,11 @@ export default {
 <style scoped>
   .swiper-item{
     text-align: center;
-    height: 45vh;
+    height: 50vh;
   }
 
   .swiper-item img{
     width:100%;
-    height: 45vh;
+    height: 100%;
   }
 </style>

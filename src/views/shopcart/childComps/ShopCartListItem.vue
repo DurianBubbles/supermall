@@ -63,7 +63,7 @@ export default {
 
 .goodsimage {
   height: 100%;
-  width: 20%;
+  width: 25%;
   text-align: center;
   margin-right: 15px;
   border-radius: 10px;
@@ -76,7 +76,7 @@ export default {
 }
 
 .info {
-  width: 70%;
+  width: 65%;
   height: 100%;
   position: relative;
 }

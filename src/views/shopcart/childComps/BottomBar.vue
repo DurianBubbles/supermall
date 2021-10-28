@@ -65,7 +65,7 @@ export default {
 
 <style scoped>
 .bottombar {
-  height: 30px;
+  height: 40px;
   position: absolute;
   bottom: 49px;
   left: 0;
@@ -78,6 +78,8 @@ export default {
 
 .totalPrice {
   flex: 1;
+  height: 100%;
+  line-height: 40px;
 }
 
 .settle {
@@ -86,13 +88,16 @@ export default {
   background: #1296db;
   padding: 2px 5px;
   box-sizing: border-box;
-  line-height: 26px;
+  line-height: 40px;
   text-align: center;
+  color: #fff;
 }
 
 .icon {
   display: flex;
   margin-right: 20px;
+  height: 100%;
+  align-items: center;
 }
 
 .checkbtn {
