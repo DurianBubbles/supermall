@@ -43,7 +43,6 @@ display: none;
 .category-item img {
   width: 80px;
   height: 80px;
-  /* margin-bottom: 5px; */
   border-radius: 50%;
 }
 

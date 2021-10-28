@@ -2,9 +2,9 @@
   <div class="baseinfo">
     <div class="tittle">{{goods.tittle}}</div>
     <div class="priceinfo">
-      <span class="realPrice">{{goods.realPrice}}</span>
-      <span class="oldPrice">{{goods.oldPrice}}</span>
-      <span class="discount">{{goods.discount}}</span>
+      <span class="realPrice">{{goods.realPrice | priceFormat}}</span>
+      <span class="oldPrice">{{goods.oldPrice | priceFormat}}</span>
+      <span class="discount">{{goods.discount | priceFormat}}</span>
     </div>
     <div class="noticeinfo">
       <span class="sales">销量 {{goods.sales}}</span>
@@ -23,6 +23,11 @@ export default {
       default(){
         return {}
       }
+    }
+  },
+  filters:{
+    priceFormat(price){
+      return "￥" + price
     }
   }
 }
