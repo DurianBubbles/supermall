@@ -1,0 +1,53 @@
+<template>
+  <div class="scroll-right">
+    <div class="category-item" v-for="(item, index) in item" :key="index">
+      <img :src="item.url" alt=""/>
+      <p>{{ item.desc }}</p>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "CategoryRight",
+  props: {
+    item: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+  }
+};
+</script>
+
+<style scoped>
+.scroll-right {
+  flex: 3;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.scroll-right::-webkit-scrollbar {
+/*隐藏滚轮*/
+display: none;
+}
+
+.category-item {
+  width: 33%;
+  float: left;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.category-item img {
+  width: 80px;
+  height: 80px;
+  /* margin-bottom: 5px; */
+  border-radius: 50%;
+}
+
+.category-item p {
+  font-size: 12px;
+}
+</style>
