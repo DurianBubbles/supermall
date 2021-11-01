@@ -1,5 +1,6 @@
 <template>
   <div class="info">
+    <!-- 单个内容 -->
     <ProfileInfoItem v-for="(item,index) in info" :key="index" :item="item"></ProfileInfoItem>
   </div>
 </template>

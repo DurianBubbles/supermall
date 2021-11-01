@@ -1,9 +1,14 @@
 <template>
   <div class="profile">
+    <!-- 顶部栏 -->
     <NavBar class="nav-bar"><div slot="center">我的档案</div></NavBar>
+    <!-- 登录/注册 -->
     <ProfilLogin />
+    <!-- 余额、优惠、积分 -->
     <ProfileInfo />
+    <!-- 消息、商城、会员卡 -->
     <ProfileCard1 />
+    <!-- 购物车、下载APP -->
     <ProfileCard2 />
   </div>
 </template>

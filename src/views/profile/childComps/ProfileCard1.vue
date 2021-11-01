@@ -1,5 +1,6 @@
 <template>
   <div class="item-box">
+      <!-- 单行功能条 -->
       <ProfileCardItem :info="cardInfo[0]">
         <img src="~assets/img/profile/message.svg" alt="">
       </ProfileCardItem>

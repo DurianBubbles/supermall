@@ -1,7 +1,7 @@
 <template>
   <div class="scroll-right">
     <div class="category-item" v-for="(item, index) in item" :key="index">
-      <img :src="item.url" alt=""/>
+      <img :src="item.url" alt="" />
       <p>{{ item.desc }}</p>
     </div>
   </div>
@@ -11,13 +11,14 @@
 export default {
   name: "CategoryRight",
   props: {
+    // 详细栏图片、文本数据
     item: {
       type: Array,
       default() {
         return [];
       },
     },
-  }
+  },
 };
 </script>
 
@@ -28,9 +29,9 @@ export default {
   overflow-y: scroll;
 }
 
+/* 隐藏滚动条 */
 .scroll-right::-webkit-scrollbar {
-/*隐藏滚轮*/
-display: none;
+  display: none;
 }
 
 .category-item {

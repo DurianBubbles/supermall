@@ -11,6 +11,7 @@ export default {
   name:'CategoryLeft',
   components:{Scroll,NavMenu},
   props:{
+    // 导航栏文本信息
     item:{
       type:Array,
       default(){
@@ -25,9 +26,11 @@ export default {
     }
   },
   methods:{
+    // 活跃状态按钮添加样式
     activeStyle(index){
       return this.currentIndex == index
     },
+    // 导航点击事件
     changecontent(index){
       this.currentIndex = index
       this.$emit('changecontent',index)

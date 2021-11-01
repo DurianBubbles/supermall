@@ -8,6 +8,7 @@
 export default {
   name:'NavMenu',
   props:{
+    // 单个文本信息
     item:{
       type:String,
       default:''

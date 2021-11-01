@@ -4,7 +4,7 @@ export function request(config){
     const instance =  axios.create({
       // http://192.168.1.4:8080/
       // http://localhost:8080/
-        baseURL:'http://192.168.0.108:8080/',
+        baseURL:'http://192.168.0.101:8080/',
         timeout:5000
     })
 
