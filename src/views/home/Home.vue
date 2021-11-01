@@ -8,6 +8,8 @@
     <NavBar class="home-nav">
       <div slot="center">购物街</div>
     </NavBar>
+    <!-- 用于实现吸顶效果 -->
+    <TabControl v-show="isShowTabControl" :tittles="['流行','新款','精选']" :currentindex="tabcontrolstyle" class="tabcontrol" @subindex="goodsitem"></TabControl>
     <!-- nowposition监听位置 -->
     <!-- loadmore监听加载更多 -->
     <Scroll class="outside" ref="scroll"
@@ -21,7 +23,7 @@
         <RecommendView :recomend="recomend"></RecommendView>
         <!-- 流行 -->
         <Popular :popular="popular"></Popular>
-        <TabControl :tittles="['流行','新款','精选']" class="tabcontrol" @subindex="goodsitem"></TabControl>
+        <TabControl ref="tabControl" :tittles="['流行','新款','精选']" :currentindex="tabcontrolstyle" class="tabcontrol" @subindex="goodsitem"></TabControl>
         <!-- 商品展示模块 -->
         <!-- imgloadend监听GoodsList中图片加载完成之后，让Home组件对scroll的高度进行一个刷新 -->
         <GoodsList :goods="goodslist" @imgloadend="excurefresh"></GoodsList>
@@ -68,7 +70,13 @@ export default {
       // 决定GoodsList显示不同的数据
       currentvalue:'pop',
       // 控制 返回顶部按钮 是否显示
-      isShow:false
+      isShow:false,
+      // 同步tabcontrol样式
+      tabcontrolstyle:0,
+      // tabControl的offsetTop值
+      taboffsetTop:0,
+      // 是否显示吸顶效果
+      isShowTabControl:false
     }
   },
   components:{
@@ -110,7 +118,10 @@ export default {
     },
     // 切换 板块
     goodsitem(index){
+      // 加载不同板块信息
       this.currentvalue = this.tabcontrolvalue[index];
+      // 同步样式
+      this.tabcontrolstyle = index
     },
     // 返回顶部
     backtopclick(){
@@ -120,6 +131,7 @@ export default {
     excuposition(position){
       // 控制 返回顶部按钮 是否显示
       this.isShow = -(position.y) > 850
+      this.isShowTabControl = -(position.y) > this.taboffsetTop
     },
     // 上拉加载更多
     exculoadmore(){
@@ -130,6 +142,8 @@ export default {
       // 500 为防抖函数等待时长
       let fun = this.debounce(this.$refs.scroll.refreshHeight,500)
       fun()
+      // 获取tabcontrol offsetTop值
+      this.taboffsetTop = this.$refs.tabControl.$el.offsetTop
     },
     // 解决频繁请求scroll的refresh()函数，防抖函数
     debounce(func,delay){

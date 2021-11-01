@@ -17,12 +17,11 @@ export default {
       default(){
         return []
       }
-    }
-  },
-  data(){
-    return {
-      // 记录当前谁处于活跃状态
-      currentindex:0
+    },
+    // 记录当前谁处于活跃状态
+    currentindex:{
+      type:Number,
+      default:0
     }
   },
   methods:{
